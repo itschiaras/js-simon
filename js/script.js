@@ -7,6 +7,8 @@ let message = document.getElementById('message');
 // console.log(message);
 let rndNumberContainer = document.getElementById('rndNumberContainer');
 // console.log(rndNumberContainer);
+let inputBoxes = document.getElementById('inputboxes');
+let inputs = '';
 
 //funzione per generare numeri interi random
 function getRandomNumber(min, max) {
@@ -23,6 +25,25 @@ function generateRndNumbers () {
     return rndNumbers;
 }
 
+// funzione per cancellare i numeri nell'html
+
+setTimeout(deleteNumbers, 3000);
+
+function deleteNumbers () {
+    message.innerHTML = 'Adesso scrivi nei box tutti i numeri che ricordi';
+    rndNumberContainer.innerHTML = '' ;
+    
+    
+}
+
+
+
+
+
+
+
 //genero i numeri e li stampo nell'html
 let rndNumbers = generateRndNumbers(1, 100);
 rndNumberContainer.innerHTML = `${rndNumbers}`;
+inputBoxes.innerHTML += inputs;
+
