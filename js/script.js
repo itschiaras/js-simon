@@ -9,9 +9,13 @@ let rndNumberContainer = document.getElementById('rndNumberContainer');
 // console.log(rndNumberContainer);
 let inputBoxes = document.getElementById('inputboxes');
 let inputs = '';
+let userNumbers = [];
+
+
 
 btn = document.getElementById('play');
 // console.log(btn);
+
 
 //funzione per generare numeri interi random
 function getRandomNumber(min, max) {
@@ -36,8 +40,8 @@ function deleteNumbers () {
     message.innerHTML = 'Adesso scrivi nei box tutti i numeri che ricordi';
     rndNumberContainer.innerHTML = '';
     btn.classList.remove('d-none');
-    for (let i = 0; i <= 5; i++){
-        inputs += `<input type="number" min="1" max="100">`
+    for (let i = 0; i <= 4; i++){
+        inputs += `<input type="number" min="1" max="100" class="input-all ms-1" id="input-${[i]}">`
     }
     inputBoxes.innerHTML += inputs;
     
@@ -45,9 +49,46 @@ function deleteNumbers () {
 }
 
 
+function getValues () {
+    let inputAll = document.querySelectorAll('.input-all');
+    console.log(inputAll);
+    
+    for (let i = 0; i < inputAll.length; i++) {
+        let userNumber = inputAll[i].value;
+       
+        userNumbers.push(userNumber);
+        console.log(userNumbers);
+         
+    } 
+    
+    
+    
+}
+
+function compareNumbers () {
+    if (rndNumbers.length != userNumbers.length) {
+        message.innerHTML = `Hai perso, i numeri da ricordare erano ${rndNumbers}`;
+} else {
+    for(let i=0; i < rndNumbers.length; i++) {
+        if (rndNumbers[i] != userNumbers[i]) {
+            message.innerHTML = `Hai perso, i numeri da ricordare erano ${rndNumbers}`;
+            
+        } else {
+            message.innerHTML = `Complimenti, hai ricordato tutti i numeri!`;
+        }
+        
+    }
+       
+    
+}
+}
+
+btn.addEventListener('click', getValues);
+btn.addEventListener('click', compareNumbers);
 
 //genero i numeri e li stampo nell'html
 let rndNumbers = generateRndNumbers(1, 100);
+console.log(rndNumbers);
 rndNumberContainer.innerHTML = `${rndNumbers}`;
 
 
