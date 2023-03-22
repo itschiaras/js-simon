@@ -34,7 +34,7 @@ function generateRndNumbers () {
 
 // funzione per cancellare i numeri nell'html, mostrare il bottone e inserire gli input box
 
-setTimeout(deleteNumbers, 3000);
+setTimeout(deleteNumbers, 1000 * 3);
 
 function deleteNumbers () {
     message.innerHTML = 'Adesso scrivi nei box tutti i numeri che ricordi';
@@ -68,7 +68,7 @@ function compareNumbers () {
         }
     } 
     console.log(guessed);
-    message.innerHTML = `<h2>Hai indovinato questi numeri: ${guessed}</h2> 
+    message.innerHTML = `<h2>Hai indovinato ${guessed.length} numeri, ovvero: ${guessed}</h2> 
     <h3>I numeri esatti erano: ${rndNumbers}</h3>` 
 }
 
