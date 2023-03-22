@@ -34,7 +34,7 @@ function generateRndNumbers () {
 
 // funzione per cancellare i numeri nell'html, mostrare il bottone e inserire gli input box
 
-setTimeout(deleteNumbers, 1000 * 30);
+
 
 function deleteNumbers () {
     message.innerHTML = 'Adesso scrivi nei box tutti i numeri che ricordi';
@@ -45,6 +45,8 @@ function deleteNumbers () {
     }
     inputBoxes.innerHTML += inputs;
 }
+
+setTimeout(deleteNumbers, 1000 * 30);
 
 
 function getValues () {
@@ -68,8 +70,19 @@ function compareNumbers () {
         }
     } 
     console.log(guessed);
-    message.innerHTML = `<h2>Hai indovinato ${guessed.length} numeri, ovvero: ${guessed}</h2> 
-    <h3>I numeri esatti erano: ${rndNumbers}</h3>` 
+    if (guessed.length == 0) {
+        message.innerHTML = `Non hai indovinato nessun numero :(`
+    } else if (guessed.length == 1) {
+        message.innerHTML = `<h2>Hai indovinato solo ${guessed.length} numero, ovvero: ${guessed}
+        <h3>I numeri esatti erano: ${rndNumbers}</h3>`
+    } else if (guessed.length == 5) {
+        message.innerHTML = `<h2>Hai indovinato tutti i numeri!</h2> 
+        <h3>I numeri da indovinare erano: ${rndNumbers}</h3>` 
+    } else {
+        message.innerHTML = `<h2>Hai indovinato ${guessed.length} numeri, ovvero: ${guessed}.
+        <h3>I numeri esatti erano: ${rndNumbers}</h3>`
+    }
+    
 }
 
 
