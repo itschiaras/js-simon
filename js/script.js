@@ -44,14 +44,11 @@ function deleteNumbers () {
         inputs += `<input type="number" min="1" max="100" class="input-all ms-1" id="input-${[i]}">`
     }
     inputBoxes.innerHTML += inputs;
-    
-    
 }
 
 
 function getValues () {
     let inputAll = document.querySelectorAll('input');
-    
     let userNumbers = [];
     for (let i = 0; i < inputAll.length; i++) {
         if (!userNumbers.includes(inputAll[i].value)) {
@@ -72,27 +69,7 @@ function compareNumbers () {
     } 
     console.log(guessed);
     message.innerHTML = `<h2>Hai indovinato questi numeri: ${guessed}</h2> 
-    <h3>I numeri esatti erano: ${rndNumbers}</h3>`
-
-    
-
-
-
-    //     if (rndNumbers.length != userNumbers.length) {
-//         message.innerHTML = `Hai perso, i numeri da ricordare erano ${rndNumbers}`;
-// } else {
-//     for(let i=0; i < rndNumbers.length; i++) {
-//         if (rndNumbers[i] != userNumbers[i]) {
-//             message.innerHTML = `Hai perso, i numeri da ricordare erano ${rndNumbers}`;
-            
-//         } else {
-//             message.innerHTML = `Complimenti, hai ricordato tutti i numeri!`;
-//         }
-        
-//     }
-       
-    
-// }
+    <h3>I numeri esatti erano: ${rndNumbers}</h3>` 
 }
 
 
