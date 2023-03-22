@@ -34,7 +34,7 @@ function generateRndNumbers () {
 
 // funzione per cancellare i numeri nell'html, mostrare il bottone e inserire gli input box
 
-setTimeout(deleteNumbers, 1000 * 30);
+setTimeout(deleteNumbers, 3000);
 
 function deleteNumbers () {
     message.innerHTML = 'Adesso scrivi nei box tutti i numeri che ricordi';
@@ -50,40 +50,54 @@ function deleteNumbers () {
 
 
 function getValues () {
-    let inputAll = document.querySelectorAll('.input-all');
-    console.log(inputAll);
+    let inputAll = document.querySelectorAll('input');
     
+    let userNumbers = [];
     for (let i = 0; i < inputAll.length; i++) {
-        let userNumber = inputAll[i].value;
-       
-        userNumbers.push(userNumber);
-        console.log(userNumbers);
-         
-    } 
-    
-    
-    
+        if (!userNumbers.includes(inputAll[i].value)) {
+            userNumbers.push(parseInt(inputAll[i].value));
+        };
+    }; 
+    console.log(userNumbers);
+    return userNumbers;
 }
 
 function compareNumbers () {
-    if (rndNumbers.length != userNumbers.length) {
-        message.innerHTML = `Hai perso, i numeri da ricordare erano ${rndNumbers}`;
-} else {
-    for(let i=0; i < rndNumbers.length; i++) {
-        if (rndNumbers[i] != userNumbers[i]) {
-            message.innerHTML = `Hai perso, i numeri da ricordare erano ${rndNumbers}`;
-            
-        } else {
-            message.innerHTML = `Complimenti, hai ricordato tutti i numeri!`;
+    let userNums = getValues();
+    const guessed = [];
+    for (let i = 0; i < userNums.length; i++) {
+        if (rndNumbers.includes(userNums[i])) {
+            guessed.push(userNums[i]);
         }
+    } 
+    console.log(guessed);
+    message.innerHTML = `<h2>Hai indovinato questi numeri: ${guessed}</h2> 
+    <h3>I numeri esatti erano: ${rndNumbers}</h3>`
+
+    
+
+
+
+    //     if (rndNumbers.length != userNumbers.length) {
+//         message.innerHTML = `Hai perso, i numeri da ricordare erano ${rndNumbers}`;
+// } else {
+//     for(let i=0; i < rndNumbers.length; i++) {
+//         if (rndNumbers[i] != userNumbers[i]) {
+//             message.innerHTML = `Hai perso, i numeri da ricordare erano ${rndNumbers}`;
+            
+//         } else {
+//             message.innerHTML = `Complimenti, hai ricordato tutti i numeri!`;
+//         }
         
-    }
+//     }
        
     
-}
+// }
 }
 
-btn.addEventListener('click', getValues);
+
+
+// btn.addEventListener('click', getValues);
 btn.addEventListener('click', compareNumbers);
 
 //genero i numeri e li stampo nell'html
