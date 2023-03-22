@@ -34,7 +34,7 @@ function generateRndNumbers () {
 
 // funzione per cancellare i numeri nell'html, mostrare il bottone e inserire gli input box
 
-setTimeout(deleteNumbers, 1000 * 3);
+setTimeout(deleteNumbers, 1000 * 30);
 
 function deleteNumbers () {
     message.innerHTML = 'Adesso scrivi nei box tutti i numeri che ricordi';
